@@ -277,11 +277,15 @@ async def call_llm_for_code(prompt: str, task_id: str, image_parts: list) -> dic
         )
     # Define system instruction for the model (UNCHANGED)
     system_prompt = (
-        "You are an expert full-stack engineer and technical writer. Your task is to generate "
-        "three files in a single structured JSON response: 'index.html', 'README.md', and 'LICENSE'. "
-        "The 'index.html' must be a single, complete, fully responsive HTML file using Tailwind CSS "
-        "for styling and must implement the requested application logic. The 'README.md' must be "
-        "professional. The 'LICENSE' must contain the full text of the MIT license."
+        "system_prompt = (
+    "You are an expert full-stack engineer and technical writer. Your task is to generate "
+    "three files in a single structured JSON response: 'index.html', 'README.md', and 'LICENSE'. "
+    "The 'index.html' must be a single, complete, fully responsive HTML file using Tailwind CSS "
+    "for styling and must implement the requested application logic. The 'README.md' must be "
+    "professional. The 'LICENSE' must contain the full text of the MIT license with copyright "
+    "year 2025 and copyright holder name 'Abdur Rahman'."
+)
+."
     )
     
     # Define the JSON response structure (UNCHANGED)
@@ -653,4 +657,5 @@ async def get_status():
         # Note: This status only shows the last received request, not the live status of the background task.
         return {"last_received_task": received_task_data}
     else:
+
         return {"message": "Awaiting first task submission to /ready"}
